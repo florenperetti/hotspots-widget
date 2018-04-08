@@ -3,14 +3,12 @@ export default {
   methods: {
     getCenter(el) {
       const element = el.$el || el;
-      if (element) {
-        const centerX = (element.offsetLeft + element.offsetWidth) / 2;
-        const centerY = (element.offsetTop + element.offsetHeight) / 2;
-        return {
-          x: centerX,
-          y: centerY,
-        };
-      }
+      const centerX = (element.offsetLeft + element.offsetWidth) / 2;
+      const centerY = (element.offsetTop + element.offsetHeight) / 2;
+      return {
+        x: centerX,
+        y: centerY,
+      };
     },
   },
 };

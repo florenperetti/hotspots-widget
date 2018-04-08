@@ -23,7 +23,7 @@ export default {
           y: 6.94444,
           text: 'a',
           content: '<h2>A title</h2><h3>A subtitle</h3>Lorem ipsum dolor sit amet, con sed beatae ut consequuntur quod error maxime? Asperiores minus veritatis adipisci error pariatur tempora iusto, quibusdam recusandae expedita.',
-          position: 'top',
+          position: 'center',
         },
         {
           x: 80.625,

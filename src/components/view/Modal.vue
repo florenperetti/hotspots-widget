@@ -23,6 +23,16 @@ export default {
   overflow-y: auto;
   position: absolute;
   top: 10px;
+  z-index: 20;
+}
+.modal.center {
   left: 25%;
 }
+.modal.left {
+  left: 10px;
+}
+.modal.right {
+  right: 10px;
+}
+
 </style>
