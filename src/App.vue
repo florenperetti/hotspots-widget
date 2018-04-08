@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    <ViewMarkers></ViewMarkers>
+    <div v-if="!editMode">
+      <ViewMarkers></ViewMarkers>
+      <button tabindex="-1" @click="editMode = true" >Edit</button>
+    </div>
+    <Editor @closeEditor="editMode = false" v-else></Editor>
   </div>
 </template>
 
 <script>
 import ViewMarkers from '@/components/view/ViewMarkers';
+import Editor from '@/components/edit/Editor';
 import { mapActions } from 'vuex';
 
 export default {
@@ -13,10 +18,12 @@ export default {
 
   components: {
     ViewMarkers,
+    Editor,
   },
 
   data() {
     return {
+      editMode: false,
       hotspot: [
         {
           x: 16.25,
@@ -36,7 +43,7 @@ export default {
       widget: {
         imageUrl: 'http://fondos.fondoshd.com/images/800/planeta-azul-5303c81748a17.jpg',
         title: 'Hotspot Widget',
-        markerStyle: 'nr',
+        markerStyle: 'rn',
       },
     };
   },
@@ -49,8 +56,16 @@ export default {
   },
 
   created() {
-    this.setMarkers(this.hotspot);
-    this.storeConfiguration(this.widget);
+    if (localStorage.getItem('markers')) {
+      this.setMarkers(JSON.parse(localStorage.getItem('markers')));
+    } else {
+      this.setMarkers(this.hotspot);
+    }
+    if (localStorage.getItem('config')) {
+      this.storeConfiguration(JSON.parse(localStorage.getItem('config')));
+    } else {
+      this.storeConfiguration(this.widget);
+    }
   },
 };
 </script>
@@ -63,6 +78,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 800px;
+  max-height: 800px;
+  min-width: 400px;
+  min-height: 400px;
 }
 </style>

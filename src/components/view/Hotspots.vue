@@ -11,6 +11,8 @@
       :activeClass="showModal ? 'active' : ''"
       :markerStyle="markerCoords"
       :marker="marker"
+      :listStyle="listStyle"
+      :order="order"
       @clickHotspot="clickHotspot">
     </HotspotMarker>
     <Modal :style="modalMaxHeight" ref="modal" v-if="showModal" :marker="marker"></Modal>
@@ -53,7 +55,7 @@ export default {
     HotspotMarker,
   },
 
-  props: ['marker', 'selectedMarker'],
+  props: ['marker', 'selectedMarker', 'order', 'listStyle'],
 
   created() {
     this.markerCoords.left = `${this.marker.x}%`;
@@ -69,6 +71,9 @@ export default {
         this.$emit('markerClicked', this.marker);
         this.$nextTick(() => {
           this.modalCenter = this.getCenter(this.$refs.modal);
+          if (this.marker.position === 'right') {
+            this.modalCenter.x = `${this.modalCenter.x + 30}px`;
+          }
         });
       }
     },
@@ -85,7 +90,9 @@ export default {
 </script>
 
 <style>
-
+.wrapper {
+  list-style-position: inside;
+}
 .marker.active {
   height: 8px;
   width: 8px;

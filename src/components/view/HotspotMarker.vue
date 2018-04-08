@@ -2,16 +2,43 @@
   <div class="marker"
     :class="activeClass"
     :style="markerStyle"
-    @click="$emit('clickHotspot')">
-    {{marker.text}}
+    :listStyle="listStyle"
+    @click="clickHotspot"
+    >
+    {{format(order)}}
   </div>
 </template>
 
 <script>
+import Utils from '@/utils/Utils';
+
 export default {
   name: 'hotspot-marker',
 
-  props: ['marker', 'activeClass', 'markerStyle'],
+  mixins: [Utils],
+
+  props: ['marker', 'activeClass', 'markerStyle', 'order', 'listStyle'],
+
+  methods: {
+    clickHotspot(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      this.$emit('clickHotspot');
+    },
+    format(order) {
+      switch (this.listStyle) {
+        case 'au':
+          return this.numberToLetterUppercase(order);
+        case 'al':
+          return this.numberToLetter(order);
+        case 'rn':
+          return this.numberToRoman(order);
+        default:
+          return order + 1;
+      }
+    },
+  },
 };
 </script>
 

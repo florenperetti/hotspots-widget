@@ -32,7 +32,6 @@ export default {
   left: 10px;
 }
 .modal.right {
-  right: 10px;
+  left: 50%;
 }
-
 </style>
