@@ -85,4 +85,35 @@ export default {
   min-width: 400px;
   min-height: 400px;
 }
+button {
+  background-color: #0078e7;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+button:hover {
+  filter: alpha(opacity=90);
+  background-image: -webkit-linear-gradient(#0000,#0000000d 40%,#0000001a);
+  background-image: linear-gradient(#0000,#0000000d 40%,#0000001a);
+}
+button:active {
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset, 0 0 6px rgba(0,0,0,.2) inset;
+}
+.cancel {
+  text-decoration: none;
+  color: #2c3e50;
+  padding: .5em 1em;
+}
+button:disabled {
+  color: #9c9c9c;
+  background-color: #0261b9;
+}
+button.warning {
+  background: #df7514;
+}
 </style>

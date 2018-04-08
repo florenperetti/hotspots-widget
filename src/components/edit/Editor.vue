@@ -17,14 +17,6 @@
             <option :key="ms.key" :value="ms.key" v-for="ms in markerStyles">{{ms.label}}</option>
           </select>
         </p>
-        <p>
-          <button @click="$emit('closeEditor')">Cancel</button>
-          <button @click="save" v-show="!hotspot.x">Save & Close</button>
-          <button @click="changeMode" v-show="!hotspot.x">
-            <span v-if="!preview">Preview</span>
-            <span v-else>Edit</span>
-          </button>
-        </p>
       </div>
       <div v-show="hotspot.x">
         <h3>Hotspot</h3>
@@ -40,12 +32,21 @@
           <label for="h-content">Content: </label><br>
           <textarea id="h-content" type="text" v-model="hotspot.content"></textarea>
         </p>
-        <button @click="cancelHotspot">Cancel</button>
+        <a class="cancel" href="#" @click="cancelHotspot">Cancel</a>
         <button @click="addHotspot">Save</button>
-        <button @click="deleteHotspot">Delete</button>
+        <button class="warning" @click="deleteHotspot">Delete</button>
         <span class="help" v-show="helpTextOn">Add some content</span>
       </div>
     </section>
+    <p>
+      <a class="cancel" href="#" @click="$emit('closeEditor')">Cancel</a>
+      <button @click="save" :disabled="hotspot.x">Save & Close</button>
+      <button @click="changeMode" :disabled="hotspot.x">
+        <span v-if="!preview">Preview</span>
+        <span v-else>Back to Edit</span>
+      </button>
+    </p>
+    <h3 class="mode" v-text="preview ? 'You are in Preview Mode' : 'You are in Edit Mode'"></h3>
     <section v-if="!preview">
       <HotspotEditArea
         :markers="markers"
@@ -209,10 +210,16 @@ export default {
 <style>
 .editor {
   text-align: left;
+  background-color: #f1f1f1;
+  padding-bottom: 10px;
 }
 .editor > div {
-  width: 49%;
+  width: 44%;
   display: inline-block;
   vertical-align: top;
+  padding: 0 2%;
+}
+.mode {
+  text-align: left;
 }
 </style>
