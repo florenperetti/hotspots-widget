@@ -9,7 +9,7 @@
         </p>
         <p>
           <label for="bgUrl">Background Image URL: </label>
-          <input @change="markers = []" id="bgUrl" type="text" v-model="configuration.imageUrl">
+          <input id="bgUrl" type="text" v-model="configuration.imageUrl"><br>
         </p>
         <p>
           <label for="bgUrl">Hotspot Marker Style: </label>

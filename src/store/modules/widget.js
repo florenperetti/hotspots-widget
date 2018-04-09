@@ -28,10 +28,6 @@ const getters = {
   getConfig(context) {
     return context.configuration;
   },
-
-  getBackgroundImage(context) {
-    return context.configuration.imageUrl;
-  },
 };
 
 export default {

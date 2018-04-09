@@ -41,7 +41,7 @@ export default {
         },
       ],
       widget: {
-        imageUrl: 'http://fondos.fondoshd.com/images/800/planeta-azul-5303c81748a17.jpg',
+        imageUrl: 'http://tecreview.itesm.mx/wp-content/uploads/2016/07/alineacion.jpg',
         title: 'Hotspot Widget',
         markerStyle: 'rn',
       },

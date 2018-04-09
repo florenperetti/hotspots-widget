@@ -72,7 +72,7 @@ export default {
         this.$nextTick(() => {
           this.modalCenter = this.getCenter(this.$refs.modal);
           if (this.marker.position === 'right') {
-            this.modalCenter.x = `${this.modalCenter.x + 30}px`;
+            this.modalCenter.x = `${this.modalCenter.x + 55}px`;
           }
         });
       }

@@ -3,23 +3,12 @@ const state = {
 };
 
 const mutations = {
-  SET_MARKER(context, marker) {
-    state.markers.push(marker);
-  },
   LOAD_MARKERS(context, markers) {
     state.markers = markers;
   },
 };
 
 const actions = {
-  addMarker: ({ commit }, marker) => {
-    let markers = localStorage.getItem('markers');
-    markers = JSON.parse(markers);
-    markers.push(marker);
-    localStorage.setItem('markers', JSON.stringify(markers));
-    commit('SET_MARKER', marker);
-  },
-
   loadMarkers: ({ commit }) => {
     const markers = localStorage.getItem('markers');
     if (markers) {
