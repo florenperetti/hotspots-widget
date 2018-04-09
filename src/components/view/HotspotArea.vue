@@ -2,7 +2,7 @@
   <div class="area">
     <h1>{{config.title}}</h1>
     <div class="interactive-area" ref="area"
-    @keyup.tab="fordward"
+    @keyup.tab.exact="fordward"
     @keyup.shift.tab="backward"
     >
       <Hotspots
